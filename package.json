@@ -1,0 +1,25 @@
+{
+  "name": "aa-calendar",
+  "version": "1.0.0",
+  "description": "Accessible calendar widget with date selection modes (single day, day range) and easy keyboard navigation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uxts/aa-calendar.git"
+  },
+  "keywords": [
+    "calendar",
+    "widget",
+    "accessiblity",
+    "user-experience"
+  ],
+  "author": "uxts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uxts/aa-calendar/issues"
+  },
+  "homepage": "https://github.com/uxts/aa-calendar#readme"
+}
