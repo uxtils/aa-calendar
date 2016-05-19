@@ -1,0 +1,23 @@
+import test from 'tape';
+
+import Calendar from '../src/Calendar';
+
+test('Calendar', (t) => {
+  t.test('does not throw when instantiated', (st) => {
+    st.doesNotThrow(
+      () => new Calendar(),
+      'without paramenters'
+    );
+
+    st.end();
+  });
+
+  t.test('can have many instances', (st) => {
+    const c1 = new Calendar();
+    const c2 = new Calendar();
+
+    st.notEqual(c1, c2);
+
+    st.end();
+  });
+});
