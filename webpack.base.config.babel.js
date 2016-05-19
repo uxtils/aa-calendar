@@ -1,13 +1,14 @@
 import _ from 'lodash';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const common = {
   entry: {
-    app: './src/index.js',
+    calendarDemo: './src',
   },
   output: {
     path: `${__dirname}/build`,
-    publicPath: '/',
+    publicPath: './',
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
   },
@@ -36,10 +37,31 @@ const common = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      minify: {
+        removeComments: true,
+        removeCommentsFromCDATA: true,
+        removeCDATASectionsFromCDATA: true,
+        collapseWhitespace: true,
+        minifyJS: true,
+        minifyCSS: true,
+      },
+      template: './src/index.html',
+      inject: 'body',
+      chunks: ['calendarDemo'],
+    }),
+  ],
 };
 
 function getConfig(particularConfig) {
-  return _.merge({}, common, particularConfig);
+  function customizer(dest, src) {
+    if (_.isArray(dest)) {
+      return dest.concat(src);
+    }
+  }
+
+  return _.mergeWith(common, particularConfig, customizer);
 }
 
 const api = {

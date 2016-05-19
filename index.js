@@ -1,4 +1,4 @@
-import calendar from './src';
+import Calendar from './src/Calendar';
 
 const api = {
   

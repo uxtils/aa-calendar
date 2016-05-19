@@ -1,1 +1,5 @@
-document.write([1, 2, 3].map(x => x * 1));
+import Calendar from './Calendar';
+
+const calendarDemoInstance = new Calendar();
+
+calendarDemoInstance.test();
