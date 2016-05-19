@@ -8,16 +8,16 @@ const common = {
   },
   output: {
     path: `${__dirname}/build`,
-    publicPath: './',
+    publicPath: '/',
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
   },
   module: {
-    preloaders: [],
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel!eslint-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.html$/,

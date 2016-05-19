@@ -6,6 +6,7 @@ const config = base.getConfig({
   output: {
     filename: '[name].js',
     chunkFilename: '[name].js',
+    publicPath: './',
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
