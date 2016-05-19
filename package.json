@@ -8,6 +8,7 @@
     "build": "npm run clean && webpack --config webpack.build.config.babel.js --bail -p",
     "dev": "webpack-dev-server --inline --hot",
     "lint": "eslint **/*.js",
+    "lint:live": "npm run lint; watch -p '**/*.js' -c 'npm run lint'",
     "test": "tape -r babel-register tests/**/*.test.js | tap-notify | faucet",
     "test:live": "npm test; watch -p '**/*.js' -c 'npm test'"
   },
