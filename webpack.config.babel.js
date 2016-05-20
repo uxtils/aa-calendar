@@ -3,9 +3,10 @@ import base from './webpack.base.config.babel.js';
 const devServer = {
   port: 8080,
   host: 'localhost',
-  contentBase: `${__dirname}/src`,
+  contentBase: `${__dirname}/example`,
   stats: {
     chunks: false,
+    children: false,
   },
 };
 

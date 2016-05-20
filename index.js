@@ -1,7 +1,3 @@
-import Calendar from './src/Calendar';
+import Calendar from './lib/Calendar';
 
-const api = {
-
-};
-
-export default api;
+export default Calendar;

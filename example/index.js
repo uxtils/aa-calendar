@@ -1,4 +1,4 @@
-import Calendar from './Calendar';
+import Calendar from '..';
 
 const calendarDemoInstance = new Calendar();
 

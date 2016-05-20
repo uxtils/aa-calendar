@@ -4,7 +4,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const common = {
   entry: {
-    calendarDemo: './src',
+    example: './example',
   },
   output: {
     path: `${__dirname}/build`,
@@ -25,7 +25,7 @@ const common = {
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!sass',
+        loader: 'style!css!sass!sasslint',
       },
       {
         test: /\.css$/,
@@ -37,6 +37,10 @@ const common = {
       },
     ],
   },
+  sasslint: {
+    emitError: true,
+    emitWarning: true,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       minify: {
@@ -47,9 +51,9 @@ const common = {
         minifyJS: true,
         minifyCSS: true,
       },
-      template: './src/index.html',
+      template: './example/index.html',
       inject: 'body',
-      chunks: ['calendarDemo'],
+      chunks: ['example'],
     }),
   ],
 };
