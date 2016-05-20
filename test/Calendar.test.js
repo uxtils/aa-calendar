@@ -1,6 +1,6 @@
 import test from 'tape';
 
-import Calendar from '../src/Calendar';
+import Calendar from '../';
 
 test('Calendar', (t) => {
   t.test('does not throw when instantiated', (st) => {
