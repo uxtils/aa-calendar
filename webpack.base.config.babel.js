@@ -1,9 +1,10 @@
 import _ from 'lodash';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const common = {
   entry: {
-    app: './src/index.js',
+    example: './example',
   },
   output: {
     path: `${__dirname}/build`,
@@ -12,11 +13,11 @@ const common = {
     chunkFilename: '[name].bundle.js',
   },
   module: {
-    preloaders: [],
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel!eslint-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.html$/,
@@ -24,7 +25,7 @@ const common = {
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!sass',
+        loader: 'style!css!sass!sasslint',
       },
       {
         test: /\.css$/,
@@ -36,10 +37,35 @@ const common = {
       },
     ],
   },
+  sasslint: {
+    emitError: true,
+    emitWarning: true,
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      minify: {
+        removeComments: true,
+        removeCommentsFromCDATA: true,
+        removeCDATASectionsFromCDATA: true,
+        collapseWhitespace: true,
+        minifyJS: true,
+        minifyCSS: true,
+      },
+      template: './example/index.html',
+      inject: 'body',
+      chunks: ['example'],
+    }),
+  ],
 };
 
 function getConfig(particularConfig) {
-  return _.merge({}, common, particularConfig);
+  function customizer(dest, src) {
+    if (_.isArray(dest)) {
+      return dest.concat(src);
+    }
+  }
+
+  return _.mergeWith(common, particularConfig, customizer);
 }
 
 const api = {

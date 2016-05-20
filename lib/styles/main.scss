@@ -1,0 +1,9 @@
+@import 'variables';
+
+@mixin test {
+  color: $color-red;
+}
+
+body {
+  @include test;
+}
