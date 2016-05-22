@@ -10,7 +10,7 @@
     "dev": "webpack-dev-server --inline --hot",
     "lint": "eslint **/*.js",
     "lint:live": "npm run lint; watch -p '**/*.js' -c 'npm run lint'",
-    "test": "tape -r babel-register test/**/*.test.js | tap-notify | faucet",
+    "test": "tape -r babel-register -r ignore-styles test/**/*.test.js | tap-notify | faucet",
     "test:live": "npm test; watch -p '**/*.js' -c 'npm test'",
     "docs": "documentation build index.js -f md > docs/index.md",
     "docs:html": "documentation build index.js -f html -o docs/html"
