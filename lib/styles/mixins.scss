@@ -1,0 +1,39 @@
+@mixin aspectRatio($width, $height) {
+  position: relative;
+
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@mixin absoluteCenter(){
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin matrixBorder(){
+	box-sizing: border-box;
+	border-right: 1px solid $cellHoverColor;
+	border-bottom: 1px solid $cellHoverColor;
+
+	&:nth-child(7n) {
+		border-right: none;
+	}
+
+	&:nth-last-of-type(-n + 7):not(:nth-child(-n + 7)){
+		border-bottom: none;
+	}
+}
