@@ -1,9 +1,57 @@
 @import 'variables';
+@import 'mixins';
 
-@mixin test {
-  color: $color-red;
-}
+.calendar {
+	text-align: center;
+	font-family: arial;
+	max-width: $cellMaxWidth * 7;
+	margin: auto;
+	-webkit-user-select: none;
+	user-select: none;
 
-body {
-  @include test;
+	.navigation {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+	}
+
+	ul,
+	li {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+
+	ul.labels,
+	ul.matrix {
+		display: flex;
+		flex-flow: row wrap;
+
+		li {
+			@include matrixBorder;
+			@include aspectRatio(1, 1);
+			width: calc(100% / 7);
+			cursor: default;
+
+			span {
+				@include absoluteCenter;
+			}
+
+			&:hover:not(:empty) {
+				background-color: $cellHoverColor;
+			}
+		}
+	}
+
+	ul.labels {
+		margin-top: 30px;
+
+		li {
+			@include aspectRatio(2, 1);
+
+			&:hover:not(.empty) {
+				background-color: transparent;
+			}
+		}
+	}
 }
