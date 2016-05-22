@@ -69,7 +69,7 @@ function getConfig(particularConfig) {
 }
 
 const api = {
-  getConfig: getConfig
+  getConfig
 };
 
 export default api;
